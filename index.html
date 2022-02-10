@@ -1,0 +1,13 @@
+<html><head>
+<title>Confluence PageId Bookmarklet</title>
+</head><body>
+<h1>Confluence PageId Bookmarklet</h1>
+<p>Sometimes confluence uses links like <i>https://.../viewpage.action?pageId=123456789</i> and sometimes it uses something like <i>https://.../My+Page</i>. 
+I think the former style of links is much more desirable, as the latter breaks on any page move or renaming.</p>
+<p>Here is how you get to the pageId link easily:</p>
+<ol><li>Bookmark the following link, so that it appears in your bookmarks bar: 
+<a href="javascript: (() => { var meta=document.getElementsByTagName('meta'); var pageid=0; var baseurl=''; for(let i = 0;i < meta.length; i++){ if(meta[i].name=='ajs-page-id'){pageid=meta[i].content};if(meta[i].name=='confluence-base-url'){baseurl=meta[i].content}; } if(pageid==0){alert('Could not find pageid...')}else{document.location=baseurl+'/pages/viewpage.action?pageId='+pageid ;} })(); ">Confluence PageId</a></li>
+<li>Navigate to a Confluence page</li>
+<li>Click on the bookmarklet and the URL will change to the version using <i>pageId</i></li>
+</ol>
+</body></html>
